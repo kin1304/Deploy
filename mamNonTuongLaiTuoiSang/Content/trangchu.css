@@ -1,0 +1,139 @@
+* {
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+#top-header ul {
+    background-color: #1F2B7B;
+    color: white;
+    text-align: center;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    list-style-type: none;
+}
+
+#contact-wrapper li {
+    padding: 20px;
+    margin-right: 10px;
+    position: relative;
+    font-size: 20px;
+}
+
+    #contact-wrapper li:not(:last-child)::after {
+        content: "|"; /* Thêm dấu gạch đứng */
+        position: absolute;
+        right: -7px; /* Đặt dấu gạch đứng cách bên phải của li */
+    }
+
+#icon-wrapper li {
+    margin-right: 10px;
+}
+
+
+#bottom-header {
+    display: flex;
+    height: 100px;
+    background-color: #ffffff; /* Màu nền tùy chọn */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+}
+
+#left-section {
+    display: flex;
+    flex: 10%;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+}
+
+    #left-section img {
+        width: 80px;
+        height: 80px;
+    }
+
+
+#right-section {
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    flex: 90%;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+}
+
+    #right-section #categories {
+        display: flex;
+        justify-content: space-between; /* Căn giữa theo chiều ngang */
+        align-items: center; /* Căn giữa theo chiều dọc */
+        list-style-type: none;
+    }
+
+        #right-section #categories li {
+            margin-right: 20px;
+            font-size: 15px;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #1F2B7B;
+            font-weight: bold;
+        }
+
+
+#content {
+    display: flex;
+    height: 100px;
+    background-color: rgb(226, 223, 43);
+    justify-content: center;
+    align-items: center;
+}
+
+footer {
+    display: flex;
+    background-color: #2F5787;
+    color: white;
+    height: 360px;
+    justify-content: space-between;
+}
+
+#About-us-wrapper {
+    flex: 1;
+}
+
+#Introduction-wrapper {
+    flex: 1;
+}
+
+#Information-wrapper {
+    flex: 1;
+}
+
+footer div ul {
+    padding: 20px;
+}
+
+    footer div ul h1 {
+        margin-bottom: 20px;
+        border-bottom: 5px solid #AD4B94;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+        padding-bottom: 5px;
+    }
+
+
+    footer div ul li {
+        margin-bottom: 10px;
+    }
+
+a {
+    text-decoration: none;
+    color: blue;
+    font-size: 20px;
+}
+
+a.hold {
+    color: orange;
+    font-size: 25px; /* Phóng to chữ khi nhấn giữ */
+}
+a:visited {
+    color: blue; /* Màu cho liên kết đã nhấn */
+}
+a.hover{
+    color: red; /* Màu cho liên kết khi rê chuột vào */
+}

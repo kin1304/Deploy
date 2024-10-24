@@ -1,0 +1,77 @@
+﻿@model IEnumerable<mamNonTuongLaiTuoiSang.Models.TinTuc>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<!-- Form Tìm Kiếm -->
+<form asp-action="Index" method="get" class="form-inline mb-3">
+    <!-- Tìm Kiếm -->
+    <div class="form-group mr-2">
+        <input type="text" name="searchQuery" class="form-control" placeholder="Tìm kiếm bằng ID hoặc Tiêu Đề..." value="@ViewBag.SearchQuery" />
+    </div>
+
+    <!-- Nút Tìm -->
+    <button type="submit" class="btn btn-primary">
+        <i class="fas fa-search"></i> Tìm
+    </button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdTinTuc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TieuDe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NoiDung)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Anh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaStNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdTinTuc)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TieuDe)
+            </td>
+            <td>
+                    @Html.Raw(item.NoiDung.Length > 100 ? item.NoiDung.Substring(0, 100) + "..." : item.NoiDung)
+            </td>
+            <td>
+                    @if (!string.IsNullOrEmpty(item.Anh))
+                    {
+                                <img src="~/Content/images/@item.Anh" style="width: 100px; height: auto;" />
+                    }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaSt)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdTinTuc">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdTinTuc">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdTinTuc">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

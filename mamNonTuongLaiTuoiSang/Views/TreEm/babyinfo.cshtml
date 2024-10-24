@@ -1,0 +1,48 @@
+﻿@model mamNonTuongLaiTuoiSang.Models.HocSinh
+@{
+    ViewBag.title = "Trẻ em";
+    Layout = "~/Views/Shared/_LayoutPh.cshtml";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/Content/babyinfo.css">
+}
+<body>
+    <div class="container">
+        <div class="child-info-header">
+            <h1>Thông Tin Trẻ</h1>
+            <button id="edit-btn" >Chỉnh Sửa</button>
+        </div>
+        <div class="child-info">
+            <div class="profile-pic">
+                <img src="~/Content/images/nguyentranthanhnha.png" alt="Ảnh trẻ">
+            </div>
+            <div class="child-details">
+                <p><strong>Họ và Tên:</strong> @Model.TenHs</p>
+                <p><strong>Ngày Sinh:</strong> @Model.NamSinh</p>
+                <p><strong>Giới Tính:</strong> @Model.GioiTinh</p>
+                @if(Model.IdPhNavigation != null)
+                {
+                    <p><strong>Số Điện Thoại Phụ Huynh:</strong> @Model.IdPhNavigation.Sdt</p>
+                }
+                
+            </div>
+        </div>
+
+        <div class="health-info">
+            <h2>Thông Tin Sức Khỏe</h2>
+            <p><strong>Cân Nặng:</strong> @Model.CanNang (KG)</p>
+            <p><strong>Chiều Cao:</strong> @Model.ChieuCao (M)</p>
+            <p><strong>Tiêm Chủng:</strong> Đầy Đủ</p>
+        </div>
+
+        <div class="attendance-info">
+            <h2>Điểm Danh</h2>
+            <ul>
+                <li>Ngày 01/09/2024 - Có Mặt</li>
+                <li>Ngày 02/09/2024 - Vắng Mặt</li>
+                <li>Ngày 03/09/2024 - Có Mặt</li>
+            </ul>
+        </div>
+    </div>
+</body>
+

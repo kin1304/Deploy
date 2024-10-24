@@ -1,0 +1,87 @@
+﻿@model IEnumerable<mamNonTuongLaiTuoiSang.Models.DiemDanh>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Điểm danh</h1>
+
+<p>
+    <a asp-controller="DiemDanh" asp-action="Create">Thêm mới</a>
+
+    <!-- Form tìm kiếm -->
+    <form method="get" asp-action="Index" class="d-inline-block ml-3">
+        <div class="form-group mb-0">
+            <input type="text" name="searchQuery" placeholder="Tìm kiếm IdDd, IdHs, IdLop..." class="form-control d-inline-block" />
+            <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+        </div>
+    </form>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewBag.IdDdSortParm">
+                    Mã điểm danh
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewBag.IdHsSortParm">
+                    Mã học sinh
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewBag.IdLopSortParm">
+                    Mã lớp
+                </a>
+            </th>
+            <th>
+                    Ngày
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewBag.ThangSortParm">
+                    Tháng
+                </a>
+            </th>
+            <th>
+                    Trạng thái vắng
+            </th>
+            <th>
+                    Trạng thái phép
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdDd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdHs)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdLop)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ngay)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TrangThai)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TrangThaiNghi)
+                </td>
+                <td>
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.IdDd }) |
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.IdDd }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.IdDd })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

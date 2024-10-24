@@ -1,0 +1,61 @@
+﻿@model IEnumerable<mamNonTuongLaiTuoiSang.Models.Tkb>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ngay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CaHoc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdLop)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.IdMh)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CaHoc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdLop)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdMh)
+            </td>
+            <td>
+                    <a asp-action="Edit"
+                       asp-route-Ngay="@item.Ngay"
+                       asp-route-IdLop="@item.IdLop">Edit</a> |
+                    <a asp-action="Details"
+                       asp-route-Ngay="@item.Ngay"
+                       asp-route-IdLop="@item.IdLop">Details</a> |
+                    <a asp-action="Delete"
+                       asp-route-Ngay="@item.Ngay"
+                       asp-route-IdLop="@item.IdLop">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

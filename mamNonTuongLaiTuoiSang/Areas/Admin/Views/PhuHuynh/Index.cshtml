@@ -1,0 +1,93 @@
+﻿@model IEnumerable<mamNonTuongLaiTuoiSang.Models.PhuHuynh>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<script>
+    function redirectToCreate() {
+        window.location.href = '@Url.Action("Create", "PhuHuynh", new { area = "Admin" })';
+    }
+</script>
+
+<p>
+    <button onclick="redirectToCreate()" class="btn btn-primary">Create New</button>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdPh)
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["HoTenSortParam"]">
+                    @Html.DisplayNameFor(model => model.HoTen)
+                </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiaChi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GioiTinh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgheNghiep)
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NamSinhSortParam"]">
+                    @Html.DisplayNameFor(model => model.NamSinh)
+                </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MatKhau)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sdt)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdPh)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoTen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaChi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GioiTinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgheNghiep)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NamSinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MatKhau)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sdt)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdPh">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdPh">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdPh">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

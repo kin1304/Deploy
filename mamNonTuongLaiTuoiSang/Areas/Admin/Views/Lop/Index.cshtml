@@ -1,0 +1,66 @@
+﻿@model IEnumerable<mamNonTuongLaiTuoiSang.Models.Lop>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+
+    <!-- Dropdown để lọc sĩ số -->
+    <form method="get" asp-action="Index" class="d-inline-block ml-3">
+        <div class="form-group mb-0">
+            @Html.DropDownList("siSoFilter", (SelectList)ViewBag.siSoFilter, new { @class = "form-control d-inline-block w-auto", @style = "display:inline-block; width:auto;" })
+            <button type="submit" class="btn btn-primary">Lọc</button>
+        </div>
+    </form>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdLop)
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["TenLopSortParm"]">
+                    @Html.DisplayNameFor(model => model.TenLop)
+                </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SiSo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaStNavigation.MaSt)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdLop)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenLop)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SiSo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaStNavigation.MaSt)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdLop">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdLop">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdLop">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

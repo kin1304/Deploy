@@ -1,0 +1,88 @@
+﻿<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+    <style>  
+        body {
+            background-image: linear-gradient(to right top, #565656, #747274, #968f91, #b9aeac, #dacfc7, #e7dbcf, #f2e7d7, #fdf3df, #fdead4, #ffe0cc, #ffd5c6, #ffcbc4);
+            background-size: cover;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="flex">
+        <!-- Sidebar -->
+        <div class="w-1/6 sidebar-bg h-screen p-4 border border-gray-300 rounded-lg shadow-2xl">
+            <div class="text-gray-500 text-lg mb-4">Trang người dùng</div>
+            <ul class="space-y-2">
+                <li>
+                    
+                    <button id="btnProfile" class="flex items-center text-gray-700 w-full text-left focus:outline-none hover:bg-gray-200 p-2 rounded"
+                            onclick ="navigateTo('/PhuHuynh/Info/@ViewData["PhuHuynh"]')">
+                        <i class="fas fa-user mr-2"></i> Thông tin người dùng
+                    </button>
+                </li>
+                <li>
+                    <button id="btnNo2" class="flex items-center text-gray-700 w-full text-left focus:outline-none hover:bg-gray-200 p-2 rounded"
+                            onclick="navigateTo('/TreEm/Index/@ViewData["PhuHuynh"]')">
+                        <i class="fas fa-icons mr-2"></i> Trẻ em của tui
+                    </button>
+                </li>
+                <li>
+                    <button id="btnNo3" class="flex items-center text-gray-700 w-full text-left focus:outline-none hover:bg-gray-200 p-2 rounded">
+                        <i class="fas fa-map-marker-alt mr-2"></i> No3
+                    </button>
+                </li>
+                <li>
+                    <button id="btnNo4" class="flex items-center text-gray-700 w-full text-left focus:outline-none hover:bg-gray-200 p-2 rounded">
+                        <i class="fas fa-table mr-2"></i> No4
+                    </button>
+                </li>
+                <li>
+                    <button id="btnNo5" class="flex items-center text-gray-700 w-full text-left focus:outline-none hover:bg-gray-200 p-2 rounded">
+                        <i class="fas fa-user-plus mr-2"></i> No5
+                    </button>
+                </li>
+                <li>
+                    <button id="btnLogout" class="flex items-center text-gray-700 w-full text-left focus:outline-none hover:bg-gray-200 p-2 rounded">
+                        <i class="fas fa-sign-in-alt mr-2"></i> Đăng xuất
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="w-4/5 h-screen p-4">
+            <!-- Header -->
+            <div class="header-bg p-6 border border-gray-300 rounded-lg shadow-2xl mb-4">
+                <h3 style="font: 30px;">Xin chào</h3>
+                <div class="relative">
+                    <input type="text" placeholder="Search" class="bg-white text-gray-700 rounded-full px-4 py-2 focus:outline-none">                
+                </div>
+            </div>
+            <!-- Nội dung động sẽ hiển thị ở đây -->
+            @RenderBody()
+            @RenderSection("Scripts", required: false)
+            @RenderSection("Styles", required: false)
+        </div>
+    </div>
+
+    <!-- Modal Logout -->
+    <div id="logoutModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 hidden justify-center items-center">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold mb-4">Bạn có chắc chắn muốn đăng xuất không?</h2>
+            <div class="flex justify-end space-x-4">
+                <button id="cancelLogout" class="bg-gray-300 text-gray-700 px-4 py-2 rounded">Hủy</button>
+                <button id="confirmLogout" class="bg-red-500 text-white px-4 py-2 rounded">Đăng xuất</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function navigateTo(url) {
+            window.location.href = url; // Điều hướng đến URL được truyền vào
+        }
+    </script>
+</body>

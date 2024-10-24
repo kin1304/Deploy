@@ -1,0 +1,68 @@
+﻿@model IEnumerable<mamNonTuongLaiTuoiSang.Models.HocSinhLop>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+<script>
+    function redirectToCreate() {
+        window.location.href = '@Url.Action("Create", "HocSinhLop", new { area = "Admin" })';
+    }
+</script>
+<p>
+    <button onclick="redirectToCreate()" class="btn btn-primary">Create New</button>
+</p>
+<form asp-action="Index" method="get" class="form-inline mb-3">
+    <!-- Lọc theo DiemChuyenCan -->
+    <div class="form-group mr-2">
+        @Html.DropDownList("diemChuyenCanFilter", (SelectList)ViewBag.DiemChuyenCanFilterOptions, new { @class = "form-control", @id = "diemChuyenCanFilter" })
+    </div>
+
+    <!-- Nút Tìm và Lọc -->
+    <button type="submit" class="btn btn-primary">
+        <i class="fas fa-search"></i> Tìm &amp; Lọc
+    </button>
+</form>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["DiemChuyenCanSortParam"]">
+                @Html.DisplayNameFor(model => model.DiemChuyenCan)
+                </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdHs)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdLop)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiemChuyenCan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdHs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdLop)
+            </td>
+            <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.IdHs }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.IdHs }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.IdHs })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

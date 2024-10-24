@@ -1,0 +1,55 @@
+﻿@model IEnumerable<mamNonTuongLaiTuoiSang.Models.ChucVu>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Quản lý Chức vụ</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Tạo mới Chức vụ</a>
+</p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.First().TenCv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().ViTri)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().LuongCoBan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().HeSoLuong)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenCv)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ViTri)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LuongCoBan)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HeSoLuong)
+                </td>
+                <td>
+                    <a asp-action="Delete"
+                       asp-route-TenCV="@item.TenCv"
+                       asp-route-ViTri="@item.ViTri">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

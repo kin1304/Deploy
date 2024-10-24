@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chỉnh Sửa Thông Tin Trẻ</title>
+    <link rel="stylesheet" href="~/Content/EditBabyLayout.css">
+</head>
+<body>
+    <div class="container">
+        <div class="child-info-header">
+            <h1>Chỉnh Sửa Thông Tin Trẻ</h1>
+            <button id="save-btn">Lưu</button>
+        </div>
+        <div class="child-info">
+            <div class="profile-pic">
+                <img src="~/Content/images/nha_da_banh.jpg" alt="Ảnh trẻ">
+            </div>
+            <div class="child-details">
+                <form id="child-form">
+                    <label for="name">Họ và Tên:</label>
+                    <input type="text" id="name" name="name" value="Nguyễn Văn A" required>
+
+                    <label for="dob">Ngày Sinh:</label>
+                    <input type="date" id="dob" name="dob" value="2018-01-01" required>
+
+                    <label for="class">Lớp:</label>
+                    <input type="text" id="class" name="class" value="Mầm 1" required>
+
+                    <label for="gender">Giới Tính:</label>
+                    <select id="gender" name="gender" required>
+                        <option value="male" selected>Nam</option>
+                        <option value="female">Nữ</option>
+                        <option value="other">Khác</option>
+                    </select>
+
+                    <label for="parent-phone">Số Điện Thoại Phụ Huynh:</label>
+                    <input type="tel" id="parent-phone" name="parent-phone" value="0123456789" required>
+                </form>
+            </div>
+        </div>
+
+        <div class="health-info">
+            <h2>Thông Tin Sức Khỏe</h2>
+            <p><strong>Cân Nặng:</strong> <input type="number" value="18" required> kg</p>
+            <p><strong>Chiều Cao:</strong> <input type="number" value="105" required> cm</p>
+            <p>
+                <strong>Tiêm Chủng:</strong>
+                <select required>
+                    <option value="full" selected>Đầy Đủ</option>
+                    <option value="partial">Chưa Đầy Đủ</option>
+                </select>
+            </p>
+        </div>
+
+        <div class="attendance-info">
+            <h2>Điểm Danh</h2>
+            <ul>
+                <li>Ngày 01/09/2024 - Có Mặt</li>
+                <li>Ngày 02/09/2024 - Vắng Mặt</li>
+                <li>Ngày 03/09/2024 - Có Mặt</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

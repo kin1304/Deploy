@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+    <title>User</title>
+</head>
+<body class="bg-gray-100">
+    <div class="flex">
+        <!-- Sidebar -->        
+        <div class="w-1/5 bg-white h-screen p-4">
+            <div class="text-gray-500 text-sm mb-4">Trang người dùng</div>
+            <ul class="space-y-4">
+                <li>
+                    <button id="btnProfile" class="flex items-center text-gray-700 w-full text-left focus:outline-none hover:bg-gray-200 p-2 rounded">
+                        <i class="fas fa-user mr-2"></i> Thông tin người dùng
+                    </button>
+                </li>
+                <li>
+                    <button id="btnNo1" class="flex items-center text-gray-700 w-full text-left focus:outline-none hover:bg-gray-200 p-2 rounded">
+                        <i class="fas fa-tachometer-alt mr-2"></i> No1
+                    </button>
+                </li>
+                <li>
+                    <button id="btnNo2" class="flex items-center text-gray-700 w-full text-left focus:outline-none hover:bg-gray-200 p-2 rounded">
+                        <i class="fas fa-icons mr-2"></i> No2
+                    </button>
+                </li>
+                <li>
+                    <button id="btnNo3" class="flex items-center text-gray-700 w-full text-left focus:outline-none hover:bg-gray-200 p-2 rounded">
+                        <i class="fas fa-map-marker-alt mr-2"></i> No3
+                    </button>
+                </li>
+                <li>
+                    <button id="btnNo4" class="flex items-center text-gray-700 w-full text-left focus:outline-none hover:bg-gray-200 p-2 rounded">
+                        <i class="fas fa-table mr-2"></i> No4
+                    </button>
+                </li>
+                <li>
+                    <button id="btnNo5" class="flex items-center text-gray-700 w-full text-left focus:outline-none hover:bg-gray-200 p-2 rounded">
+                        <i class="fas fa-user-plus mr-2"></i> No5
+                    </button>
+                </li>
+                <li>
+                    <button id="btnLogout" class="flex items-center text-gray-700 w-full text-left focus:outline-none hover:bg-gray-200 p-2 rounded">
+                        <i class="fas fa-sign-in-alt mr-2"></i> Đăng xuất
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="w-4/5">
+            <!-- Header -->
+            <div class="bg-purple-400 p-8 text-white">
+                <div class="flex justify-between items-center">
+                    <div class="text-2xl">Hello....</div>
+                    <div class="flex items-center space-x-4">
+                        <div class="relative">
+                            <input type="text" placeholder="Search" class="bg-white text-gray-700 rounded-full px-4 py-2 focus:outline-none">
+                            <i class="fas fa-search absolute right-3 top-2 text-gray-500"></i>
+                        </div>
+                    </div>
+                </div>             
+            </div>
+            <!-- Account Information (Dynamic content here) -->
+            <div class="p-8">
+                <div id="mainContent" class="bg-white p-6 rounded-lg shadow-md">
+                    <!-- Nội dung động sẽ hiển thị ở đây -->
+                    <div id="contentArea" class="text-gray-700 text-lg">
+                        Mầm non tương lai tươi sáng xin chào !
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Logout -->
+    <div id="logoutModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 hidden justify-center items-center">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold mb-4">Bạn có chắc chắn muốn đăng xuất không?</h2>
+            <div class="flex justify-end space-x-4">
+                <button id="cancelLogout" class="bg-gray-300 text-gray-700 px-4 py-2 rounded">Hủy</button>
+                <button id="confirmLogout" class="bg-red-500 text-white px-4 py-2 rounded">Đăng xuất</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Lấy các nút trong Sidebar
+        const btnProfile = document.getElementById("btnProfile");
+        const btnNo1 = document.getElementById("btnNo1");
+        const btnNo2 = document.getElementById("btnNo2");
+        const btnNo3 = document.getElementById("btnNo3");
+        const btnNo4 = document.getElementById("btnNo4");
+        const btnNo5 = document.getElementById("btnNo5");
+        const btnLogout = document.getElementById("btnLogout");
+
+        // Lấy phần hiển thị nội dung
+        const contentArea = document.getElementById("contentArea");
+
+        // Modal logout
+        const logoutModal = document.getElementById("logoutModal");
+        const cancelLogout = document.getElementById("cancelLogout");
+        const confirmLogout = document.getElementById("confirmLogout");
+
+        // Thêm sự kiện khi click vào từng nút
+        btnProfile.addEventListener("click", function () {
+            contentArea.innerHTML = `
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="flex justify-between items-center mb-4">
+                                <div class="text-gray-700 text-lg">Tài khoản của bạn</div>                            
+                            </div>
+                            <div class="space-y-6">
+                                <div>
+                                    <div class="text-gray-500 mb-2">Thông tin tài khoản</div>
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <input type="text" placeholder="Username" class="bg-gray-100 p-2 rounded border border-gray-300">
+                                        <input type="text" placeholder="Email address" class="bg-gray-100 p-2 rounded border border-gray-300">
+                                        <input type="text" placeholder="First name" class="bg-gray-100 p-2 rounded border border-gray-300">
+                                        <input type="text" placeholder="Last name" class="bg-gray-100 p-2 rounded border border-gray-300">
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="text-gray-500 mb-2">CONTACT INFORMATION</div>
+                                    <div class="grid grid-cols-3 gap-4">
+                                        <input type="text" placeholder="Address" class="bg-gray-100 p-2 rounded border border-gray-300 col-span-3">
+                                        <input type="text" placeholder="City" class="bg-gray-100 p-2 rounded border border-gray-300">
+                                        <input type="text" placeholder="Country" class="bg-gray-100 p-2 rounded border border-gray-300">
+                                        <input type="text" placeholder="Postal code" class="bg-gray-100 p-2 rounded border border-gray-300">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+        });
+
+        btnNo1.addEventListener("click", function () {
+            contentArea.innerHTML = `<h2 class="text-2xl font-bold mb-4">Chức năng số 1</h2>`;
+        });
+
+        btnNo2.addEventListener("click", function () {
+            contentArea.innerHTML = `<h2 class="text-2xl font-bold mb-4">Chức năng số 2</h2>`;
+        });
+
+        btnNo3.addEventListener("click", function () {
+            contentArea.innerHTML = `<h2 class="text-2xl font-bold mb-4">Chức năng số 3</h2>`;
+        });
+
+        btnNo4.addEventListener("click", function () {
+            contentArea.innerHTML = `<h2 class="text-2xl font-bold mb-4">Chức năng số 4</h2>`;
+        });
+
+        btnNo5.addEventListener("click", function () {
+            contentArea.innerHTML = `<h2 class="text-2xl font-bold mb-4">Chức năng số 5</h2>`;
+        });
+
+        btnLogout.addEventListener("click", function () {
+            logoutModal.classList.remove("hidden");
+        });
+
+        cancelLogout.addEventListener("click", function () {
+            logoutModal.classList.add("hidden");
+        });
+
+        confirmLogout.addEventListener("click", function () {
+            window.location.href = "http://localhost:5005/";
+        });
+    </script>
+</body>
+</html>

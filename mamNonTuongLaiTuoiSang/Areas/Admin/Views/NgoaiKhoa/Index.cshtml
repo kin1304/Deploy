@@ -1,0 +1,93 @@
+﻿@model IEnumerable<mamNonTuongLaiTuoiSang.Models.NgoaiKhoa>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<!-- Form Tìm Kiếm và Lọc -->
+<form asp-action="Index" method="get" class="form-inline mb-3">
+    <!-- Tìm Kiếm -->
+    <div class="form-group mr-2">
+        <input type="text" name="searchQuery" class="form-control" placeholder="Tìm kiếm..." value="@ViewBag.SearchQuery" />
+    </div>
+
+    <!-- Lọc -->
+    <div class="form-group mr-2">
+        @Html.DropDownList("filterOption", (SelectList)ViewBag.FilterOptions, new { @class = "form-control" })
+    </div>
+
+    <!-- Nút Tìm và Lọc -->
+    <button type="submit" class="btn btn-primary">
+        <i class="fas fa-search"></i> Tìm &amp; Lọc
+    </button>
+</form>
+
+<!-- Thông Báo Lỗi (nếu có) -->
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <div class="alert alert-danger">
+        @ViewBag.ErrorMessage
+    </div>
+}
+
+<!-- Thông Báo Không Có Kết Quả -->
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        Không tìm thấy kết quả nào cho tìm kiếm và lọc của bạn.
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.ActionLink("ID", "Index", new { sortOrder = ViewBag.IdSortParm, searchQuery = ViewBag.SearchQuery })
+            </th>
+            <th>
+                @Html.ActionLink("Tên Ngoại Khóa", "Index", new { sortOrder = ViewBag.NameSortParm, searchQuery = ViewBag.SearchQuery })
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayBatDau)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayKetThu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MoTa)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdNk)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenNk)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayBatDau)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayKetThu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MoTa)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdNk">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdNk">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdNk">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

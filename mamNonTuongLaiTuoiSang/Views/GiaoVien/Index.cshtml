@@ -1,0 +1,104 @@
+﻿@model mamNonTuongLaiTuoiSang.Models.GiaoVien
+
+@{
+    ViewData["Title"] = "Index";
+    ViewData["GiaoVien"] = Model.MaSt;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<div>
+    <h4>GiaoVien</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Mã Số Thuế
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MaSt)
+        </dd>
+        <dt class = "col-sm-2">
+            Trình độ chuyên môn
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TrinhDoChuyenMon)
+        </dd>
+        <dt class = "col-sm-2">
+            Sao
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SaoDanhGia)
+        </dd>
+        <dt class="col-sm-2">
+            Họ và tên
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MaStNavigation.HoTen)
+        </dd>
+        <dt class="col-sm-2">
+            Năm Sinh
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MaStNavigation.NamSinh)
+        </dd>
+        @if(Model.MaStNavigation != null && Model.MaStNavigation.GioiTinh == true)
+        {
+            <dt class="col-sm-2">
+               Giới Tính
+            </dt>
+            <dd class="col-sm-10">
+                Nam
+            </dd>
+        }
+        else
+        {
+            <dt class="col-sm-2">
+                Giới Tính
+            </dt>
+            <dd class="col-sm-10">
+                Nữ
+            </dd>
+        }
+        <dt class="col-sm-2">
+            Năm Làm
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MaStNavigation.NamLam)
+        </dd>
+        <dt class="col-sm-2">
+            Email
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MaStNavigation.Email)
+        </dd>
+        <dt class="col-sm-2">
+            Địa Chỉ
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MaStNavigation.DiaChi)
+        </dd>
+        <dt class="col-sm-2">
+           Số Điện Thoại
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MaStNavigation.Sdt)
+        </dd>
+        <dt class="col-sm-2">
+            Chức Vụ
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MaStNavigation.ChucVu)
+        </dd>
+        <dt class="col-sm-2">
+            Vị Trí
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MaStNavigation.ViTri)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

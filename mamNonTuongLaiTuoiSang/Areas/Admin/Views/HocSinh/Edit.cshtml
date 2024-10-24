@@ -1,0 +1,51 @@
+﻿@model mamNonTuongLaiTuoiSang.Models.HocSinh
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>HocSinh</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdHs" />
+            <div class="form-group">
+                <label asp-for="TenHs" class="control-label"></label>
+                <input asp-for="TenHs" class="form-control" />
+                <span asp-validation-for="TenHs" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GioiTinh" class="control-label"></label>
+                <input asp-for="GioiTinh" class="form-control" />
+                <span asp-validation-for="GioiTinh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NamSinh" class="control-label"></label>
+                <input asp-for="NamSinh" class="form-control" />
+                <span asp-validation-for="NamSinh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdPh" class="control-label"></label>
+                <select asp-for="IdPh" class="form-control" asp-items="ViewBag.PhuHuynhList"></select>
+                <span asp-validation-for="IdPh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="QuanHe" class="control-label"></label>
+                <input asp-for="QuanHe" class="form-control" />
+                <span asp-validation-for="QuanHe" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

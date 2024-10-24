@@ -1,0 +1,103 @@
+﻿@model mamNonTuongLaiTuoiSang.Models.NhanVien
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>NhanVien</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="MaSt" class="control-label">Mã số:</label>
+                <input asp-for="MaSt" class="form-control" />
+                <span asp-validation-for="MaSt" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="HoTen" class="control-label">Họ tên:</label>
+                <input asp-for="HoTen" class="form-control" />
+                <span asp-validation-for="HoTen" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="MatKhau" class="control-label">Mật khẩu:</label>
+                <input asp-for="MatKhau" class="form-control"/>
+                <span asp-validation-for="MatKhau" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DiaChi" class="control-label">Địa chỉ:</label>
+                <input asp-for="DiaChi" class="form-control" />
+                <span asp-validation-for="DiaChi" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="NamSinh" class="control-label">Năm sinh:</label>
+                <input asp-for="NamSinh" class="form-control" type="number" />
+                <span asp-validation-for="NamSinh" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="GioiTinh" class="control-label">Giới tính:</label>
+                <select asp-for="GioiTinh" class="form-control">
+                    <option value="">-- Chọn giới tính --</option>
+                    <option value="True">Nam</option>
+                    <option value="False">Nữ</option>
+                </select>
+                <span asp-validation-for="GioiTinh" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="NamLam" class="control-label">Năm làm việc:</label>
+                <input asp-for="NamLam" class="form-control" />
+                <span asp-validation-for="NamLam" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Email" class="control-label">Email:</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Sdt" class="control-label">Số điện thoại:</label>
+                <input asp-for="Sdt" class="form-control" />
+                <span asp-validation-for="Sdt" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="TenCv" class="control-label"></label>
+                <select asp-for="TenCv" class="form-control" asp-items="ViewBag.ChucVuList"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ViTri" class="control-label"></label>
+                <select asp-for="ViTri" class="form-control" asp-items="ViewBag.ViTriList"></select>
+            </div>
+
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function redirectToCreate() {
+        window.location.href = '@Url.Action("Index", "NhanVien", new { area = "Admin" })';
+    }
+</script>
+
+<button onclick="redirectToCreate()" class="btn btn-primary">Back to list</button>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

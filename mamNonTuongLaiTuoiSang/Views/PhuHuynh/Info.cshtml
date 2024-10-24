@@ -1,0 +1,57 @@
+﻿@model mamNonTuongLaiTuoiSang.Models.PhuHuynh
+@{
+    ViewBag.title = "User";
+    Layout = "~/Views/Shared/_LayoutPh.cshtml";
+}
+<div class="p-8">
+    <div id="mainContent" class="main-content">
+        <div id="contentArea" class="text-gray-700 text-lg">
+            <div class="max-w-4xl mx-auto border border-gray-300 p-4">
+                <div class="flex">
+                    <div class="w-1/4">
+                        <img alt="Profile picture" class="rounded-full" height="100" src="https://storage.googleapis.com/a1aa/image/74PNLrMcK6ZDDF9oZ0uvDk62LAegmbp9zfgAqGEZJ91vopmTA.jpg" width="100" />
+                    </div>
+                    <div class="w-3/4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <h2 class="text-red-600 font-bold">Thông tin phụ huynh</h2>
+                                <p><span class="font-bold">Họ tên:</span> @Model.HoTen</p>
+                                <p><span class="font-bold">Địa chỉ:</span> @Model.DiaChi</p>
+                                @if (Model.GioiTinh == true)
+                                {
+                                    <p><span class="font-bold">Giới tính:</span> Nam </p>
+                                }
+                                else
+                                {
+                                    <p><span class="font-bold">Giới tính:</span> Nữ </p>
+                                }
+
+                                <p><span class="font-bold">Nghề nghiệp:</span> @Model.NgheNghiep</p>
+                                <p><span class="font-bold">Năm sinh:</span> @Model.NamSinh</p>
+                                <p><span class="font-bold">Email:</span> @Model.Email</p>
+                                <p><span class="font-bold">Số điện thoại:</span> @Model.Sdt</p>
+                            </div>
+                            <div>
+                                <h2 class="text-red-600 font-bold">Thông tin liên lạc</h2>
+                                <p><span class="font-bold">Dân tộc:</span> [...]</p>
+                                <p><span class="font-bold">Tôn giáo:</span> [...]</p>
+                                <p><span class="font-bold">Quốc gia:</span> [...]</p>
+                                <p><span class="font-bold">Tỉnh thành:</span> [...]</p>
+                                <p><span class="font-bold">Quận huyện:</span> [...]</p>
+
+                                <p><span class="font-bold">ĐT bàn:</span> [...]</p>
+                                <button class="mt-2 px-4 py-2 bg-gray-200 border border-gray-400">[Cập nhật thông tin cá nhân]</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <h2 class="text-red-600 font-bold">Thông tin người thân khác</h2>
+                    <p><span class="font-bold">Họ tên người liên hệ:</span> [...]</p>
+                    <p><span class="font-bold">Địa chỉ người liên hệ:</span> [...]</p>
+                    <p><span class="font-bold">Điện thoại người liên hệ:</span> [...]</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

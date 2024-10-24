@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Điền Email";
+    Layout = "~/Views/Shared/MasterLayoutLogin.cshtml";
+}
+
+@section scripts{
+    <script>
+        $(function () {
+            $('#AlertBox').removeClass('hide');
+            $('#AlertBox').delay(2000).slideUp(500);
+        });
+
+    </script>
+}
+<body style="background-color:ghostwhite;">
+    <div id="frame">
+        <div class="login">
+            <a href=""><img src="https://i.imgur.com/B7tN0Pn.png" alt="Logo" style="margin-top: 3vh;" height="160px" width="250px"></a>
+            <h1>Tài khoản của bạn</h1>
+            <p>Vui lòng nhập email tài khoản của bạn</p>
+            @if (TempData["AlertMessage"] != null)
+            {
+                <div id="AlertBox" class="alert @TempData["AlertType"] hide" role="alert" style="color: tomato">
+                    @TempData["AlertMessage"]
+                </div>
+            }
+            <br />
+            @using (Html.BeginForm("FindEmail", "ForgetPass"))
+            {
+                //description: "Enter the code sent to your email"
+                <section action="/ForgetPassController/FindEmail()" method="post">
+                    <input type="text" name="email" placeholder="Your Email">
+                    <input type="submit" name="FindEmail" value="Xác nhận" />
+                    <br><br>
+                </section>
+            }
+        </div>
+    </div>
+</body>
+
+
+

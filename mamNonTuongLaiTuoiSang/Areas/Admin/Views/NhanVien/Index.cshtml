@@ -1,0 +1,94 @@
+﻿@model IEnumerable<mamNonTuongLaiTuoiSang.Models.NhanVien>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<script>
+    function redirectToCreate() {
+        window.location.href = '@Url.Action("Create", "NhanVien", new { area = "Admin" })';
+    }
+</script>
+
+<button onclick="redirectToCreate()" class="btn btn-primary">Create New</button>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(Model => Model.MaSt)
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewBag.NameSortParm">HoTen</a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MatKhau)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiaChi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NamSinh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GioiTinh)
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewBag.NamLamSortParm">NamLam</a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sdt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChucVu)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaSt)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoTen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MatKhau)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaChi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NamSinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GioiTinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NamLam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sdt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenCv)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.MaSt">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.MaSt">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.MaSt">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

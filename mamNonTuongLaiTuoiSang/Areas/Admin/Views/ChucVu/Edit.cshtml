@@ -1,0 +1,51 @@
+﻿@model mamNonTuongLaiTuoiSang.Models.ChucVu
+
+@{
+    ViewData["Title"] = "Edit Chức vụ";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit Chức vụ</h1>
+
+<h4>Chức vụ</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <!-- Hidden fields để giữ giá trị khóa chính -->
+            <input type="hidden" asp-for="TenCv" />
+            <input type="hidden" asp-for="ViTri" />
+            <div class="form-group">
+                <label asp-for="TenCv" class="control-label">Tên Chức vụ:</label>
+                <input asp-for="TenCv" class="form-control" readonly />
+                <span asp-validation-for="TenCv" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ViTri" class="control-label">Vị trí:</label>
+                <input asp-for="ViTri" class="form-control" readonly />
+                <span asp-validation-for="ViTri" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LuongCoBan" class="control-label">Lương Cơ Bản:</label>
+                <input asp-for="LuongCoBan" class="form-control" />
+                <span asp-validation-for="LuongCoBan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HeSoLuong" class="control-label">Hệ Số Lương:</label>
+                <input asp-for="HeSoLuong" class="form-control" />
+                <span asp-validation-for="HeSoLuong" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

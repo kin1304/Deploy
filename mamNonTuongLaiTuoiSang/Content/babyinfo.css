@@ -1,0 +1,77 @@
+
+.container {
+    max-width: 900px;
+    margin: 50px auto;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.child-info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #007BFF;
+    padding-bottom: 15px;
+}
+
+.child-info-header h1 {
+    color: #007BFF;
+}
+
+#edit-btn {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#edit-btn:hover {
+    background-color: #0056b3;
+}
+
+.child-info {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.profile-pic img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.child-details {
+    margin-left: 20px;
+}
+
+.child-details p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.health-info, .attendance-info {
+    padding: 20px 0;
+}
+
+.container h2 {
+    color: #007BFF;
+    margin-bottom: 15px;
+}
+
+.container ul {
+    list-style-type: none;
+}
+
+    .container ul li {
+        background-color: #f0f8ff;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius:initial;
+    }

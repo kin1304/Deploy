@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Sai mã số xin hãy di";
+    Layout = "~/Views/Shared/MasterLayoutLogin.cshtml";
+}
+@section scripts {
+    <script>
+        $(function () {
+            $('#AlertBox').removeClass('hide');
+            $('#AlertBox').delay(2000).slideUp(500);
+        });
+
+    </script>
+}
+<body style="background-color:ghostwhite;">
+    <div id="frame">
+        <div class="login">
+            <a href=""><img src="https://i.imgur.com/B7tN0Pn.png" alt="Logo" style="margin-top: 3vh;" height="160px" width="250px"></a>
+            <h1>Chúng tôi đã gửi mail đến cho bạn</h1>
+            <p>Xin hãy check email và điền 6 số vào ô dưới đây</p>
+            @if (TempData["AlertMessage"] != null)
+            {
+                <div id="AlertBox" class="alert @TempData["AlertType"] hide" role="alert">
+                    @TempData["AlertMessage"]
+                </div>
+            }
+            <br />
+            @using (Html.BeginForm("FormCode", "ForgetPass"))
+            {
+                <section action="/ForgetPassController/FormCode()" method="post">
+                    <input type="text" name="CODE" placeholder="XXXXXX">
+                    <input type="submit" name="FormCode" value="Xác Nhận" />
+                    <br><br>
+                    @if (TempData["Input"].ToString() == "5")
+                    {
+                        <a href="@Url.Action("FindEmail", "ForgetPass")">Không thấy mail được gửi tới, nhập lại mail</a>
+                    }
+                    @if (TempData["Input"].ToString() == "6")
+                    {
+                        <p>Bạn nhập được lần cuối</p>
+                    }
+                    @{
+                        TempData["Input"] = TempData["Input"].ToString();
+                    }
+                </section>
+            }
+        </div>
+    </div>
+</body>

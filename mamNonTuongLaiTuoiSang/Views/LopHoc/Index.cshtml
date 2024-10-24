@@ -1,0 +1,42 @@
+﻿@model IEnumerable<mamNonTuongLaiTuoiSang.Models.Lop>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Mã Lớp
+            </th>
+            <th>
+                Tên Lớp
+            </th>
+            <th>
+                Sĩ Số
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdLop)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenLop)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SiSo)
+                </td>
+                <td>
+                    <a href="@Url.Action("DanhSachLop","LopHoc", new{id = item.IdLop})">Danh Sách Lớp</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

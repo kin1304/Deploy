@@ -1,0 +1,60 @@
+﻿@model IEnumerable<mamNonTuongLaiTuoiSang.Models.HocSinh>
+
+@{
+    ViewData["Title"] = "Danh sách lớp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Mã Học Sinh
+            </th>
+            <th>
+                Họ và tên học sinh
+            </th>
+            <th>
+                Giới Tính
+            </th>
+            <th>
+                Năm Sinh
+            </th>
+            <th>
+                Cân Nặng
+            </th>
+            <th>
+                Chiều Cao
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdHs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenHs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GioiTinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NamSinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CanNang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChieuCao)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", "LopHoc", new{id = item.IdHs})">Chỉnh chiều cao cân nặng</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
